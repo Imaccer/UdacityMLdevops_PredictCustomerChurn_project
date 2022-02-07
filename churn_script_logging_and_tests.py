@@ -1,6 +1,15 @@
+'''
+Test suite for library of functions for calculating customer churn
+
+Author: Ian McNally
+Date: Jan 21st 2022
+'''
+
+from lib2to3.pgen2.pgen import DFAState
 import os
 import logging
-import churn_library_solution as cls
+import churn_library as cl
+import pytest 
 
 logging.basicConfig(
     filename='./logs/churn_library.log',
@@ -8,13 +17,16 @@ logging.basicConfig(
     filemode='w',
     format='%(name)s - %(levelname)s - %(message)s')
 
+
+
 def test_import(import_data):
 	'''
 	test data import - this example is completed for you to assist with the other test functions
 	'''
 	try:
 		df = import_data("./data/bank_data.csv")
-		logging.info("Testing import_data: SUCCESS")
+		logging.info("SUCCESS: There are {} rows in your dataframe".format(df.shape[0]))
+		logging.info("SUCCESS: Testing import_data")
 	except FileNotFoundError as err:
 		logging.error("Testing import_eda: The file wasn't found")
 		raise err
@@ -22,22 +34,34 @@ def test_import(import_data):
 	try:
 		assert df.shape[0] > 0
 		assert df.shape[1] > 0
+		return df 
 	except AssertionError as err:
 		logging.error("Testing import_data: The file doesn't appear to have rows and columns")
 		raise err
 
 
-def test_eda(perform_eda):
-	'''
-	test perform eda function
-	'''
+def test_eda(perform_eda,df):
+    '''
+    test perform eda function
+    '''
+    try:
+        perform_eda(df)
+        assert os.path.isfile("./images/eda/churn_distribution.png")
+        assert os.path.isfile("./images/eda/credit_limit_vs_total_transaction.png")
+        assert os.path.isfile("./images/eda/customer_age_distribution.png")
+        assert os.path.isfile("./images/eda/heatmap.png")
+        assert os.path.isfile("./images/eda/marital_status_distribution.png")
+        assert os.path.isfile("./images/eda/total_transaction_distribution.png")
+        logging.info("Testing perform_eda: SUCCESS")
+    except AssertionError as err:
+        logging.error("Testing perform_eda: Missing file/s")
+        raise err 
 
-
-def test_encoder_helper(encoder_helper):
+def test_encoder_helper(encoder_helper,df):
 	'''
 	test encoder helper
 	'''
-
+	encoder_helper(df)
 
 def test_perform_feature_engineering(perform_feature_engineering):
 	'''
@@ -50,9 +74,15 @@ def test_train_models(train_models):
 	test train_models
 	'''
 
+def main():
+	df = test_import(cl.import_data)
+	test_eda(cl.perform_eda,df)
+	# test_encoder_helper(cl.encoder_helper,df)
+
 
 if __name__ == "__main__":
-	pass
+    main()
+    pytest.main(args=['-s', os.path.abspath(__file__)])
 
 
 

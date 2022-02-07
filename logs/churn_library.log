@@ -1,0 +1,3 @@
+root - INFO - SUCCESS: There are 10127 rows in your dataframe
+root - INFO - SUCCESS: Testing import_data
+root - INFO - Testing perform_eda: SUCCESS
