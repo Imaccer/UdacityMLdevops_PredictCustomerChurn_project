@@ -2,7 +2,7 @@
 Library of functions for calculating customer churn
 
 Author: Ian McNally
-Date: Jan 21st 2022
+Date: Feb 14th 2022
 '''
 
 # import libraries
@@ -54,7 +54,8 @@ def import_data(pth):
     output:
             df: pandas dataframe
     '''
-    return pd.read_csv(pth)
+    df = pd.read_csv(pth)
+    return df
 
 
 def perform_eda(df):
@@ -68,6 +69,7 @@ def perform_eda(df):
     '''
     df['Churn'] = df['Attrition_Flag'].apply(
         lambda val: 0 if val == "Existing Customer" else 1)
+
     fig1 = plt.figure(figsize=(20, 10))
     sns.histplot(df['Churn'].astype('category'), stat="probability", shrink=.2)
     plt.xticks([0, 1])
@@ -121,11 +123,13 @@ def perform_eda(df):
         bbox_inches='tight')
     plt.close(fig6)
 
+    return df
+
 
 def encoder_helper(df, category_lst, response):
     '''
     helper function to turn each categorical column into a new column with
-    propotion of churn for each category - associated with cell 15 from the notebook
+    proportion of churn for each category - associated with cell 15 from the notebook
 
     input:
             df: pandas dataframe
@@ -137,7 +141,7 @@ def encoder_helper(df, category_lst, response):
             df: pandas dataframe with new columns for
     '''
     tmp_lst = []
-    tmp_series = pd.Series()
+    tmp_series = pd.Series(dtype=float)
     for col in category_lst:
         tmp_series = df.groupby(col).mean()['Churn']
         for val in df[col]:
