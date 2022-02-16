@@ -352,13 +352,14 @@ def train_models(X_train, X_test, y_train, y_test, X):
 
 def main():
     '''
-    Create main() function which be holding all the main logic etc.
+    Create main() function which be holding all the main logic etc.,
     every new function instance creates a new local scope.
     '''
-    df = import_data("./data/bank_data.csv")
-    perform_eda(df)
-    df2 = encoder_helper(df, cat_columns, '_Churn')
-    X_train, X_test, y_train, y_test, X = perform_feature_engineering(df2)
+    df_import = import_data("./data/bank_data.csv")
+    df_eda = perform_eda(df_import)
+    df_helper = encoder_helper(df_eda, cat_columns, '_Churn')
+    X_train, X_test, y_train, y_test, X = perform_feature_engineering(
+        df_helper)
     train_models(X_train, X_test, y_train, y_test, X)
 
 
