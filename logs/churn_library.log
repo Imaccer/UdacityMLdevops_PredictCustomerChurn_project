@@ -1,7 +1,7 @@
-2022-02-14 21:47:05,203 root - INFO - Testing import_data - SUCCESS: Testing import_data
-2022-02-14 21:47:05,203 root - INFO - Testing import_data - SUCCESS:			There are 10127 rows in your dataframe
-2022-02-14 21:47:08,775 root - INFO - Testing perform_eda - SUCCESS: All expected files created.
-2022-02-14 21:47:09,307 root - INFO - Testing encoder_helper - SUCCESS: Expected columns exist
-2022-02-14 21:47:09,312 root - INFO - Testing perform_feature_engineering - SUCCESS:				 X_train,X_test,y_train,y_test populated with data
-2022-02-14 21:47:16,528 root - INFO - Testing train_models - SUCCESS: Result plots created
-2022-02-14 21:47:16,529 root - INFO - Testing train_models - SUCCESS: Models created
+2022-02-15 16:49:40,391 root - INFO - Testing import_data - SUCCESS: Testing import_data
+2022-02-15 16:49:40,391 root - INFO - Testing import_data - SUCCESS: 10127 rows in your dataframe
+2022-02-15 16:49:43,152 root - INFO - Testing perform_eda - SUCCESS: All expected files created.
+2022-02-15 16:49:43,677 root - INFO - Testing encoder_helper - SUCCESS: Expected columns exist
+2022-02-15 16:49:43,685 root - INFO - Testing perform_feature_engineering - SUCCESS: ML input objects populated.
+2022-02-15 16:49:50,860 root - INFO - Testing train_models - SUCCESS: Result plots created
+2022-02-15 16:49:50,860 root - INFO - Testing train_models - SUCCESS: Models created
