@@ -80,4 +80,8 @@ pylint churn_script_logging_and_tests.py
 
 Note, have added list of good names to .pylintrc file to preserve machine learning naming conventions (e.g., X_train, X_test etc.) without lowering pylint score for variable names not meeting pylint requirements.
 
+### Note to reviewer
+
+Accidentally committed to the repo with my work github account (imcnally20), hence, why there are 2 contributors to the repo. Both account (Imaccer and imcnally20) belong to me.
+
 
