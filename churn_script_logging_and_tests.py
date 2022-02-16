@@ -15,20 +15,6 @@ logging.basicConfig(
     filemode='w',
     format='%(asctime)s %(name)s - %(levelname)s - %(message)s')
 
-# @pytest.fixture
-# def df():
-# 	return cl.import_data("./data/bank_data.csv")
-
-# @pytest.fixture
-# def df2(df):
-#     return cl.encoder_helper(df,cl.cat_columns,'_Churn')
-
-# @pytest.fixture
-# def traintest(df2):
-#     X_train,X_test,y_train,y_test,X = cl.perform_feature_engineering(df2)
-#     return X_train,X_test,y_train,y_test,X
-
-
 def test_import(import_data):
     '''
     test data import - this example is completed for you to assist with the other test functions
@@ -153,4 +139,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # pytest.main(args=['-s', os.path.abspath(__file__)])
