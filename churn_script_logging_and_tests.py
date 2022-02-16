@@ -44,8 +44,8 @@ def test_import(import_data):
         assert df.shape[0] > 0
         assert df.shape[1] > 0
         logging.info(
-            "Testing import_data - SUCCESS:\
-			There are %i rows in your dataframe",df.shape[0])
+            "Testing import_data - SUCCESS: %i rows in your dataframe",
+            df.shape[0])
         return df
     except AssertionError as err:
         logging.error(
@@ -106,8 +106,7 @@ def test_perform_feature_engineering(perform_feature_engineering, df):
         assert len(y_train) > 0
         assert len(y_test) > 0
         logging.info(
-            'Testing perform_feature_engineering - SUCCESS:\
-				 X_train,X_test,y_train,y_test populated with data')
+            'Testing perform_feature_engineering - SUCCESS: ML input objects populated.')
         return X_train, X_test, y_train, y_test, X
     except AssertionError as err:
         logging.error(
